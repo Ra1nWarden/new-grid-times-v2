@@ -20,7 +20,9 @@ const MainStoryGrid = () => {
       <SecondaryStorySection>
         <StoryList>
           {SECONDARY_STORIES.map((story, index) => (
-            <SecondaryStory key={story.id} {...story} />
+            <VerticalStoryWrapper key={story.id}>
+              <SecondaryStory {...story} />
+            </VerticalStoryWrapper>
           ))}
         </StoryList>
       </SecondaryStorySection>
@@ -29,7 +31,9 @@ const MainStoryGrid = () => {
         <SectionTitle>Opinion</SectionTitle>
         <StoryList type="opinion">
           {OPINION_STORIES.map((story, index) => (
-            <OpinionStory key={story.id} {...story} />
+            <VerticalStoryWrapper key={story.id}>
+              <OpinionStory {...story} />
+            </VerticalStoryWrapper>
           ))}
         </StoryList>
       </OpinionSection>
@@ -86,24 +90,17 @@ const SecondaryStorySection = styled.section`
   }
 `;
 
+const VerticalStoryWrapper = styled.div`
+  &:not(:first-of-type) {
+    border-top: 1px solid ${COLORS.gray[300]};
+    padding-top: 16px;
+  }
+`;
+
 const StoryList = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
-
-  & > :not(:nth-child(1)) {
-    border-top: 1px solid ${COLORS.gray[300]};
-    padding-top: 16px;
-    @media ${QUERIES.tabletOnly} {
-      ${(props) =>
-        props.type === "opinion"
-          ? `
-      border-top: none;
-      padding-top: 0;
-      `
-          : ""}
-    }
-  }
 
   @media ${QUERIES.tabletOnly} {
     ${(props) =>
