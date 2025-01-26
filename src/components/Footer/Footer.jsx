@@ -1,9 +1,10 @@
-import React from 'react';
-import { Twitter, Facebook } from 'react-feather';
-import styled from 'styled-components';
-import MaxWidthWrapper from '../MaxWidthWrapper';
+import React from "react";
+import { Twitter, Facebook } from "react-feather";
+import styled from "styled-components";
+import MaxWidthWrapper from "../MaxWidthWrapper";
 
-import VisuallyHidden from '../VisuallyHidden';
+import VisuallyHidden from "../VisuallyHidden";
+import { QUERIES } from "../../constants";
 
 const Footer = () => {
   return (
@@ -25,15 +26,11 @@ const Footer = () => {
           </nav>
           <Social>
             <a href="/">
-              <VisuallyHidden>
-                Visit The Grid Times on Facebook
-              </VisuallyHidden>
+              <VisuallyHidden>Visit The Grid Times on Facebook</VisuallyHidden>
               <Facebook size={20} />
             </a>
             <a href="/">
-              <VisuallyHidden>
-                Visit The Grid Times on Twitter
-              </VisuallyHidden>
+              <VisuallyHidden>Visit The Grid Times on Twitter</VisuallyHidden>
               <Twitter size={20} />
             </a>
           </Social>
@@ -144,6 +141,12 @@ const TopRow = styled.div`
   font-size: 0.875rem;
   border-bottom: 1px solid var(--color-gray-700);
   padding: 24px 0;
+
+  @media ${QUERIES.desktopAndUp} {
+    flex-direction: row;
+    justify-content: end;
+    gap: 48px;
+  }
 `;
 
 const Social = styled.div`
@@ -170,6 +173,18 @@ const MainNavArea = styled.div`
   gap: 32px;
   padding: 32px 0 48px;
   text-align: center;
+
+  @media ${QUERIES.tabletAndUp} {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 72px 32px;
+    justify-items: start;
+    text-align: start;
+  }
+
+  @media ${QUERIES.desktopAndUp} {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
 `;
 
 const MainNavHeading = styled.h2`
@@ -196,6 +211,10 @@ const Subfooter = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media ${QUERIES.desktopAndUp} {
+    align-items: start;
+  }
 `;
 
 const Logo = styled.a`
