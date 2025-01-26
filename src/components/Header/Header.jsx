@@ -48,7 +48,7 @@ const SuperHeader = styled.div`
   background: var(--color-gray-900);
   color: white;
 
-  @media ${QUERIES.desktopAndUp} {
+  @media ${QUERIES.laptopAndUp} {
     display: none;
   }
 `;
@@ -74,7 +74,7 @@ const ActionGroup = styled.div`
 const DesktopActionGroup = styled(ActionGroup)`
   display: none;
 
-  @media ${QUERIES.desktopAndUp} {
+  @media ${QUERIES.laptopAndUp} {
     display: flex;
   }
 `;
@@ -82,7 +82,7 @@ const DesktopActionGroup = styled(ActionGroup)`
 const SubscribeGroup = styled.div`
   display: none;
 
-  @media ${QUERIES.desktopAndUp} {
+  @media ${QUERIES.laptopAndUp} {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -98,7 +98,7 @@ const MainHeader = styled(MaxWidthWrapper)`
   margin-top: 32px;
   margin-bottom: 48px;
 
-  @media ${QUERIES.desktopAndUp} {
+  @media ${QUERIES.laptopAndUp} {
     justify-content: space-between;
     margin-top: 16px;
     margin-bottom: 72px;
