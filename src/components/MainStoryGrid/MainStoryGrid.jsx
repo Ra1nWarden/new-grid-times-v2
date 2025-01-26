@@ -31,9 +31,9 @@ const MainStoryGrid = () => {
         <SectionTitle>Opinion</SectionTitle>
         <StoryList type="opinion">
           {OPINION_STORIES.map((story, index) => (
-            <VerticalStoryWrapper key={story.id}>
+            <OpinionStoryWrapper key={story.id}>
               <OpinionStory {...story} />
-            </VerticalStoryWrapper>
+            </OpinionStoryWrapper>
           ))}
         </StoryList>
       </OpinionSection>
@@ -60,15 +60,15 @@ const Wrapper = styled.div`
       "main-story secondary-stories"
       "advertisement advertisement"
       "opinion-stories opinion-stories";
-    grid-template-columns: 518px 1fr;
+    grid-template-columns: 2fr 1fr;
     gap: 16px;
   }
 
-  @media ${QUERIES.desktopAndUp} {
+  @media ${QUERIES.laptopAndUp} {
     grid-template-areas:
       "main-story secondary-stories opinion-stories"
       "main-story advertisement advertisement";
-    grid-template-columns: 477px 386px 1fr;
+    grid-template-columns: 5fr 4fr 3fr;
   }
 `;
 
@@ -84,16 +84,26 @@ const MainStorySection = styled.section`
 const SecondaryStorySection = styled.section`
   grid-area: secondary-stories;
 
-  @media ${QUERIES.desktopAndUp} {
+  @media ${QUERIES.laptopAndUp} {
     border-right: 1px solid ${COLORS.gray[300]};
     padding-right: 16px;
   }
 `;
 
 const VerticalStoryWrapper = styled.div`
+  flex: 1;
   &:not(:first-of-type) {
     border-top: 1px solid ${COLORS.gray[300]};
     padding-top: 16px;
+  }
+`;
+
+const OpinionStoryWrapper = styled(VerticalStoryWrapper)`
+  @media ${QUERIES.tabletOnly} {
+    &:not(:first-of-type) {
+      border-top: revert;
+      padding-top: revert;
+    }
   }
 `;
 
@@ -106,8 +116,8 @@ const StoryList = styled.div`
     ${(props) =>
       props.type === "opinion"
         ? `
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+        flex-direction: row;
+        gap: 32px;
     `
         : ""}
   }
@@ -115,11 +125,12 @@ const StoryList = styled.div`
 
 const OpinionSection = styled.section`
   grid-area: opinion-stories;
+  flex: 1;
 `;
 
 const AdvertisementSection = styled.section`
   grid-area: advertisement;
-  @media ${QUERIES.desktopAndUp} {
+  @media ${QUERIES.laptopAndUp} {
     border-top: 1px solid ${COLORS.gray[300]};
     padding-top: 16px;
   }
