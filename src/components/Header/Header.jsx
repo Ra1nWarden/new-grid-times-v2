@@ -97,11 +97,15 @@ const MainHeader = styled(MaxWidthWrapper)`
   justify-content: center;
   margin-top: 32px;
   margin-bottom: 48px;
+  
+  @media ${QUERIES.tabletAndUp} {
+    margin-top: 104px;
+    margin-bottom: 72px;
+  }
 
   @media ${QUERIES.laptopAndUp} {
     justify-content: space-between;
     margin-top: 16px;
-    margin-bottom: 72px;
   }
 `;
 
